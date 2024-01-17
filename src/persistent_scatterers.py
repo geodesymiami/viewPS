@@ -208,7 +208,7 @@ def add_open_street_map_image(ax, coords):
 def add_satellite_image(ax):
     pass
 
-def add_geotiff_image(ax, gtif, coords, cmap='Greys_r', clim_raster=(60, 60)):
+def add_geotiff_image(ax, gtif, coords, cmap='Greys_r'):
     data_coords = coords['lon1'], coords['lon2'], coords['lat1'], coords['lat2']
     my_image = georaster.MultiBandRaster(gtif,
                                          bands='all',
@@ -216,9 +216,7 @@ def add_geotiff_image(ax, gtif, coords, cmap='Greys_r', clim_raster=(60, 60)):
                                          latlon=True)
     ax.imshow(my_image.r,
               extent=my_image.extent,
-              cmap=cmap,
-              vmin=clim_raster[0],
-              vmax=clim_raster[1])
+              cmap=cmap)
 
 def add_dsm_image(inps, ax):
     pass
